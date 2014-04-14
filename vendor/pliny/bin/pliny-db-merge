@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require "pliny"
+require "pliny/commands"
+
+Pliny::Commands::DB::Merger.run(ARGV.dup)

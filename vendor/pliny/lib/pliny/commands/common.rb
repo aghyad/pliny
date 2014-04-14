@@ -57,7 +57,7 @@ module Pliny::Commands
     end
 
     module ClassMethods
-      def run(args)
+      def run(args = {})
         new(args).run!
       end
     end
