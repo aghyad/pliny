@@ -5,13 +5,8 @@ module Pliny::Commands::DB
   class Migrator
     include Pliny::Commands::Common
 
-    def self.run(args, stream=$stdout)
-      new(args).run!
-    end
-
-    def initialize(args={}, stream=$stdout)
+    def initialize(args={})
       @args = args
-      @stream = stream
     end
 
     def run!
@@ -24,8 +19,6 @@ module Pliny::Commands::DB
     end
 
     private
-
-    attr_accessor :args
 
     def migrations_path
       File.expand_path("db/migrate", Dir.pwd)
