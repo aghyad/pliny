@@ -3,13 +3,6 @@ require "sinatra"
 
 module Pliny ; end
 
-require "pliny/commands/common"
-require "pliny/commands/db/creator"
-require "pliny/commands/db/destroyer"
-require "pliny/commands/generator"
-require "pliny/commands/migrator"
-require "pliny/commands/rollbacker"
-
 require "pliny/error"
 require "pliny/extensions/instruments"
 require "pliny/log"
