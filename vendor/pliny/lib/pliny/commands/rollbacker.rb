@@ -2,7 +2,7 @@ require "sequel"
 require "sequel/extensions/migration"
 
 module Pliny::Commands
-  class Migrator
+  class Rollbacker
     include Common
 
     def self.run(args, stream=$stdout)
@@ -17,9 +17,10 @@ module Pliny::Commands
     def run!
       chroot!
       envs.each do |env_file, env|
-        display "Migrating #{env_file}"
+        display "Rolling back #{env_file}"
         db = Sequel.connect(env["DATABASE_URL"])
-        Sequel::Migrator.apply(db, migrations_path)
+        # always just roll back one step for now
+        Sequel::Migrator.apply(db, migrations_path, -1)
       end
     end
 

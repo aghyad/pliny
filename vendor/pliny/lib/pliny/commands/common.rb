@@ -40,5 +40,9 @@ module Pliny::Commands
     def root
       Dir.pwd
     end
+
+    private
+
+    attr_accessor :stream
   end
 end
