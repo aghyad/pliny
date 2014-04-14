@@ -1,9 +1,9 @@
 require "sequel"
 require "sequel/extensions/migration"
 
-module Pliny::Commands
+module Pliny::Commands::DB
   class Migrator
-    include Common
+    include Pliny::Commands::Common
 
     def self.run(args, stream=$stdout)
       new(args).run!

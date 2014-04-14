@@ -3,4 +3,4 @@
 require "pliny"
 require "pliny/commands"
 
-Pliny::Commands::Rollbacker.run(ARGV.dup)
+Pliny::Commands::DB::Migrator.run(ARGV.dup)
