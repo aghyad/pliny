@@ -5,6 +5,8 @@ require "bundler"
 Bundler.require(:default, :test)
 
 require "minitest/autorun"
+require "pliny"
+require "pliny/commands"
 require "rr"
 
 require_relative "../lib/pliny"

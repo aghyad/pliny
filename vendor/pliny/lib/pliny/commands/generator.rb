@@ -5,6 +5,8 @@ require "active_support/inflector"
 
 module Pliny::Commands
   class Generator
+    attr_accessor :args, :stream
+
     def self.run(args, stream=$stdout)
       new(args).run!
     end
@@ -12,6 +14,10 @@ module Pliny::Commands
     def initialize(args={}, stream=$stdout)
       @args = args
       @stream = stream
+    end
+
+    def class_name
+      name.camelize
     end
 
     def run!
@@ -36,9 +42,11 @@ module Pliny::Commands
       end
     end
 
-    private
+    def table_name
+      name.tableize
+    end
 
-    attr_accessor :args, :stream
+    private
 
     def type
       args.first
@@ -46,14 +54,6 @@ module Pliny::Commands
 
     def name
       args[1]
-    end
-
-    def class_name
-      name.camelize
-    end
-
-    def table_name
-      name.tableize
     end
 
     def display(msg)
