@@ -2,7 +2,6 @@ module Pliny::Commands
   module Common
     def self.included(klass)
       klass.extend(ClassMethods)
-      #klass.attr_writer(:stderr, :stdout)
     end
 
     def chroot!
