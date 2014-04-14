@@ -1,5 +1,10 @@
 module Pliny::Commands
   module Common
+    def self.included(klass)
+      klass.extend(ClassMethods)
+      #klass.attr_writer(:stderr, :stdout)
+    end
+
     def chroot!
       loop do
         if File.exists?(File.expand_path(".env", Dir.pwd))
@@ -17,7 +22,7 @@ module Pliny::Commands
     end
 
     def display(msg)
-      stream.puts msg
+      stdout.puts msg
     end
 
     def envs
@@ -43,6 +48,18 @@ module Pliny::Commands
 
     private
 
-    attr_accessor :stream
+    def stderr
+      @stderr || $stderr
+    end
+
+    def stdout
+      @stdout || $stdout
+    end
+
+    module ClassMethods
+      def run(args)
+        new(args).run!
+      end
+    end
   end
 end

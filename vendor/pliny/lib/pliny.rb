@@ -4,6 +4,7 @@ require "sinatra"
 module Pliny ; end
 
 require "pliny/commands/common"
+require "pliny/commands/db/creator"
 require "pliny/commands/generator"
 require "pliny/commands/migrator"
 require "pliny/commands/rollbacker"
